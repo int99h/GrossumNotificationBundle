@@ -4,6 +4,10 @@ namespace GrossumUA\NotificationBundle\Notification;
 
 use GrossumUA\NotificationBundle\Exception\PropertyNotFountException;
 
+/**
+ * Class EmailNotification
+ * @package GrossumUA\NotificationBundle\Notification
+ */
 class EmailNotification implements NotificationInterface
 {
     /**
@@ -66,7 +70,6 @@ class EmailNotification implements NotificationInterface
 
     /**
      * @param string $html
-     *
      * @return $this
      */
     public function setHtml(string $html)
@@ -86,7 +89,6 @@ class EmailNotification implements NotificationInterface
 
     /**
      * @param string $plainText
-     *
      * @return $this
      */
     public function setPlainText(string $plainText)
@@ -106,7 +108,6 @@ class EmailNotification implements NotificationInterface
 
     /**
      * @param string $subject
-     *
      * @return $this
      */
     public function setSubject(string $subject)
@@ -126,7 +127,6 @@ class EmailNotification implements NotificationInterface
 
     /**
      * @param string $fromEmail
-     *
      * @return $this
      */
     public function setFromEmail(string $fromEmail)
@@ -146,7 +146,6 @@ class EmailNotification implements NotificationInterface
 
     /**
      * @param string $fromName
-     *
      * @return $this
      */
     public function setFromName(string $fromName)
@@ -166,7 +165,6 @@ class EmailNotification implements NotificationInterface
 
     /**
      * @param string $toEmail
-     *
      * @return $this
      */
     public function setToEmail(string $toEmail)
@@ -186,7 +184,6 @@ class EmailNotification implements NotificationInterface
 
     /**
      * @param string $toName
-     *
      * @return $this
      */
     public function setToName(string $toName)
@@ -206,7 +203,6 @@ class EmailNotification implements NotificationInterface
 
     /**
      * @param string $toType
-     *
      * @return $this
      */
     public function setToType(string $toType)
@@ -226,7 +222,6 @@ class EmailNotification implements NotificationInterface
 
     /**
      * @param string $replyTo
-     *
      * @return $this
      */
     public function setReplyTo(string $replyTo)
@@ -248,7 +243,6 @@ class EmailNotification implements NotificationInterface
     /**
      * @param string $key
      * @param        $value
-     *
      * @return $this
      */
     public function addHeader(string $key, $value)
@@ -261,39 +255,39 @@ class EmailNotification implements NotificationInterface
     /**
      * {@inheritdoc}
      */
-    public function exportData()
+    public function exportData(): array
     {
         return [
-            'html'      => $this->getHtml(),
+            'html' => $this->getHtml(),
             'plainText' => $this->getPlainText(),
-            'subject'   => $this->getSubject(),
-            'from'      => [
+            'subject' => $this->getSubject(),
+            'from' => [
                 'email' => $this->getFromEmail(),
-                'name'  => $this->getFromName(),
+                'name' => $this->getFromName(),
             ],
-            'to'        => [
+            'to' => [
                 'email' => $this->getToEmail(),
-                'name'  => $this->getToName(),
-                'type'  => $this->getToType(),
+                'name' => $this->getToName(),
+                'type' => $this->getToType(),
             ],
-            'headers'   => $this->getHeaders(),
+            'headers' => $this->getHeaders(),
         ];
     }
 
     /**
      * {@inheritdoc}
      */
-    public function isValid()
+    public function isValid(): bool
     {
         $properties = [
-            'html'      => $this->getHtml(),
+            'html' => $this->getHtml(),
             'plainText' => $this->getPlainText(),
-            'subject'   => $this->getSubject(),
+            'subject' => $this->getSubject(),
             'fromEmail' => $this->getFromEmail(),
-            'fromName'  => $this->getFromName(),
-            'toEmail'   => $this->getToEmail(),
-            'toType'    => $this->getToType(),
-            'headers'   => $this->getHeaders(),
+            'fromName' => $this->getFromName(),
+            'toEmail' => $this->getToEmail(),
+            'toType' => $this->getToType(),
+            'headers' => $this->getHeaders(),
         ];
 
         foreach ($properties as $propertyKey => $propertyValue) {
@@ -307,5 +301,13 @@ class EmailNotification implements NotificationInterface
         }
 
         return true;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return 'Email';
     }
 }

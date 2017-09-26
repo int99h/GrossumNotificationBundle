@@ -5,6 +5,10 @@ namespace GrossumUA\NotificationBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
+/**
+ * Class Configuration
+ * @package GrossumUA\NotificationBundle\DependencyInjection
+ */
 class Configuration implements ConfigurationInterface
 {
     /**

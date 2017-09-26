@@ -2,6 +2,10 @@
 
 namespace GrossumUA\NotificationBundle\Notification;
 
+/**
+ * Class EntityDataUpdateNotification
+ * @package GrossumUA\NotificationBundle\Notification
+ */
 class EntityDataUpdateNotification implements NotificationInterface
 {
     /**
@@ -29,6 +33,9 @@ class EntityDataUpdateNotification implements NotificationInterface
      */
     private $global;
 
+    /**
+     * EntityDataUpdateNotification constructor.
+     */
     public function __construct()
     {
         $this->global = false;
@@ -45,7 +52,6 @@ class EntityDataUpdateNotification implements NotificationInterface
 
     /**
      * @param string $type
-     *
      * @return $this
      */
     public function setType(string $type)
@@ -65,7 +71,6 @@ class EntityDataUpdateNotification implements NotificationInterface
 
     /**
      * @param string $entityName
-     *
      * @return $this
      */
     public function setEntityName(string $entityName)
@@ -85,7 +90,6 @@ class EntityDataUpdateNotification implements NotificationInterface
 
     /**
      * @param array $entityData
-     *
      * @return $this
      */
     public function setEntityData(array $entityData)
@@ -105,7 +109,6 @@ class EntityDataUpdateNotification implements NotificationInterface
 
     /**
      * @param array $recipientHashes
-     *
      * @return $this
      */
     public function setRecipientHashes(array $recipientHashes)
@@ -125,7 +128,6 @@ class EntityDataUpdateNotification implements NotificationInterface
 
     /**
      * @param bool $global
-     *
      * @return $this
      */
     public function setGlobal(bool $global)
@@ -138,15 +140,15 @@ class EntityDataUpdateNotification implements NotificationInterface
     /**
      * @return array
      */
-    public function exportData()
+    public function exportData(): array
     {
         return [
-            'type'       => $this->getType(),
+            'type' => $this->getType(),
             'attributes' => [
                 'recipients' => $this->getRecipientHashes(),
                 'entityName' => $this->getEntityName(),
                 'entityData' => $this->getEntityData(),
-                'global'     => $this->isGlobal(),
+                'global' => $this->isGlobal(),
             ],
         ];
     }
@@ -154,8 +156,16 @@ class EntityDataUpdateNotification implements NotificationInterface
     /**
      * @return bool
      */
-    public function isValid()
+    public function isValid(): bool
     {
         return true;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return 'EntityDataUpdate';
     }
 }

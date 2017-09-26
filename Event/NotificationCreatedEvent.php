@@ -5,6 +5,10 @@ namespace GrossumUA\NotificationBundle\Event;
 use Symfony\Component\EventDispatcher\Event;
 use GrossumUA\NotificationBundle\Notification\NotificationInterface;
 
+/**
+ * Class NotificationCreatedEvent
+ * @package GrossumUA\NotificationBundle\Event
+ */
 class NotificationCreatedEvent extends Event implements NotificationEventInterface
 {
     /**

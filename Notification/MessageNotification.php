@@ -2,6 +2,12 @@
 
 namespace GrossumUA\NotificationBundle\Notification;
 
+use GrossumUA\NotificationBundle\Exception\PropertyNotFountException;
+
+/**
+ * Class MessageNotification
+ * @package GrossumUA\NotificationBundle\Notification
+ */
 class MessageNotification implements NotificationInterface
 {
     /**
@@ -44,6 +50,9 @@ class MessageNotification implements NotificationInterface
      */
     private $createdAt;
 
+    /**
+     * MessageNotification constructor.
+     */
     public function __construct()
     {
         $this->global = false;
@@ -59,7 +68,6 @@ class MessageNotification implements NotificationInterface
 
     /**
      * @param string $type
-     *
      * @return $this
      */
     public function setType(string $type)
@@ -79,7 +87,6 @@ class MessageNotification implements NotificationInterface
 
     /**
      * @param string $title
-     *
      * @return $this
      */
     public function setTitle(string $title)
@@ -99,7 +106,6 @@ class MessageNotification implements NotificationInterface
 
     /**
      * @param string $content
-     *
      * @return $this
      */
     public function setContent(string $content)
@@ -119,7 +125,6 @@ class MessageNotification implements NotificationInterface
 
     /**
      * @param string $mediaUrl
-     *
      * @return $this
      */
     public function setMediaUrl(string $mediaUrl)
@@ -139,7 +144,6 @@ class MessageNotification implements NotificationInterface
 
     /**
      * @param string $renderedContent
-     *
      * @return $this
      */
     public function setRenderedContent(string $renderedContent)
@@ -191,7 +195,6 @@ class MessageNotification implements NotificationInterface
 
     /**
      * @param \DateTime $createdAt
-     *
      * @return $this
      */
     public function setCreatedAt(\DateTime $createdAt)
@@ -204,18 +207,18 @@ class MessageNotification implements NotificationInterface
     /**
      * @return array
      */
-    public function exportData()
+    public function exportData(): array
     {
         return [
-            'type'       => $this->getType(),
+            'type' => $this->getType(),
             'attributes' => [
-                'recipients'      => $this->getRecipientHashes(),
-                'global'          => $this->isGlobal(),
-                'title'           => $this->getTitle(),
-                'content'         => $this->getContent(),
-                'mediaUrl'        => $this->getMediaUrl(),
+                'recipients' => $this->getRecipientHashes(),
+                'global' => $this->isGlobal(),
+                'title' => $this->getTitle(),
+                'content' => $this->getContent(),
+                'mediaUrl' => $this->getMediaUrl(),
                 'renderedContent' => $this->getRenderedContent(),
-                'createdAt'       => $this->getCreatedAt(),
+                'createdAt' => $this->getCreatedAt(),
             ],
         ];
     }
@@ -224,7 +227,7 @@ class MessageNotification implements NotificationInterface
      * @return bool
      * @throws PropertyNotFountException
      */
-    public function isValid()
+    public function isValid(): bool
     {
         if (!$this->isGlobal() && empty($this->getRecipientHashes())) {
             throw new PropertyNotFountException('Property global or recipientHashes is not set');
@@ -235,5 +238,13 @@ class MessageNotification implements NotificationInterface
         }
 
         return true;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return 'Message';
     }
 }

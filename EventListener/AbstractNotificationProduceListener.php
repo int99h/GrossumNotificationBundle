@@ -5,6 +5,10 @@ namespace GrossumUA\NotificationBundle\EventListener;
 use GrossumUA\NotificationBundle\Event\NotificationEventInterface;
 use GrossumUA\NotificationBundle\NotificationSender\NotificationSenderInterface;
 
+/**
+ * Class AbstractNotificationProduceListener
+ * @package GrossumUA\NotificationBundle\EventListener
+ */
 abstract class AbstractNotificationProduceListener implements NotificationProduceListenerInterface
 {
     /**
@@ -25,6 +29,6 @@ abstract class AbstractNotificationProduceListener implements NotificationProduc
      */
     public function produceNotifications(NotificationEventInterface $event)
     {
-       $this->notificationSender->sendNotification($event->getNotification());
+        $this->notificationSender->sendNotification($event->getNotification());
     }
 }

@@ -4,6 +4,10 @@ namespace GrossumUA\NotificationBundle\NotificationSender;
 
 use GrossumUA\NotificationBundle\Notification\NotificationInterface;
 
+/**
+ * Interface NotificationSenderInterface
+ * @package GrossumUA\NotificationBundle\NotificationSender
+ */
 interface NotificationSenderInterface
 {
     /**

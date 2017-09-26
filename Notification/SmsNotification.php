@@ -30,7 +30,6 @@ class SmsNotification implements NotificationInterface
 
     /**
      * @param string $message
-     *
      * @return $this
      */
     public function setMessage(string $message)
@@ -59,22 +58,22 @@ class SmsNotification implements NotificationInterface
     /**
      * @return array
      */
-    public function exportData()
+    public function exportData(): array
     {
         return [
             'message' => $this->getMessage(),
-            'phone'   => $this->getPhone(),
+            'phone' => $this->getPhone(),
         ];
     }
 
     /**
      * {@inheritdoc}
      */
-    public function isValid()
+    public function isValid(): bool
     {
         $properties = [
             'message' => $this->getMessage(),
-            'phone'   => $this->getPhone(),
+            'phone' => $this->getPhone(),
         ];
 
         foreach ($properties as $propertyKey => $propertyValue) {
@@ -84,5 +83,13 @@ class SmsNotification implements NotificationInterface
         }
 
         return true;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return 'Sms';
     }
 }

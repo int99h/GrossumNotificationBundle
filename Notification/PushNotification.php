@@ -4,6 +4,10 @@ namespace GrossumUA\NotificationBundle\Notification;
 
 use GrossumUA\NotificationBundle\Exception\PropertyNotFountException;
 
+/**
+ * Class PushNotification
+ * @package GrossumUA\NotificationBundle\Notification
+ */
 class PushNotification implements NotificationInterface
 {
     /**
@@ -41,7 +45,6 @@ class PushNotification implements NotificationInterface
 
     /**
      * @param string $title
-     *
      * @return $this
      */
     public function setTitle(string $title)
@@ -61,7 +64,6 @@ class PushNotification implements NotificationInterface
 
     /**
      * @param string $body
-     *
      * @return $this
      */
     public function setBody(string $body)
@@ -81,7 +83,6 @@ class PushNotification implements NotificationInterface
 
     /**
      * @param string $icon
-     *
      * @return $this
      */
     public function setIcon(string $icon)
@@ -101,7 +102,6 @@ class PushNotification implements NotificationInterface
 
     /**
      * @param string $osType
-     *
      * @return $this
      */
     public function setOsType(string $osType)
@@ -130,13 +130,13 @@ class PushNotification implements NotificationInterface
     /**
      * @return array
      */
-    public function exportData()
+    public function exportData(): array
     {
         return [
-            'title'              => $this->getTitle(),
-            'body'               => $this->getBody(),
-            'icon'               => $this->getIcon(),
-            'os_type'            => $this->getOsType(),
+            'title' => $this->getTitle(),
+            'body' => $this->getBody(),
+            'icon' => $this->getIcon(),
+            'os_type' => $this->getOsType(),
             'registrationTokens' => $this->getRegistrationTokens(),
         ];
     }
@@ -144,13 +144,13 @@ class PushNotification implements NotificationInterface
     /**
      * {@inheritdoc}
      */
-    public function isValid()
+    public function isValid(): bool
     {
         $properties = [
-            'title'              => $this->getTitle(),
-            'body'               => $this->getBody(),
-            'icon'               => $this->getIcon(),
-            'osType'             => $this->getOsType(),
+            'title' => $this->getTitle(),
+            'body' => $this->getBody(),
+            'icon' => $this->getIcon(),
+            'osType' => $this->getOsType(),
             'registrationTokens' => $this->getRegistrationTokens(),
         ];
 
@@ -161,5 +161,13 @@ class PushNotification implements NotificationInterface
         }
 
         return true;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return 'Push';
     }
 }

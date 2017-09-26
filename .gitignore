@@ -1,0 +1,12 @@
+### Composer template
+/vendor
+
+### macOS template
+# General
+*.DS_Store
+
+# IntelliJ project files
+/.idea
+*.iml
+out
+gen

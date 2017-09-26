@@ -2,6 +2,10 @@
 
 namespace GrossumUA\NotificationBundle\Notification;
 
+/**
+ * Interface NotificationInterface
+ * @package GrossumUA\NotificationBundle\Notification
+ */
 interface NotificationInterface
 {
     const SOCKET_NOTIFICATION_TYPE_ENTITY_UPDATE = 'entity_update';
@@ -14,12 +18,17 @@ interface NotificationInterface
     const PHONE_OS_TYPE_ANDROID = 'phone_android';
 
     /**
+     * @return string
+     */
+    public function getName(): string;
+
+    /**
      * @return array
      */
-    public function exportData();
+    public function exportData(): array;
 
     /**
      * @return bool
      */
-    public function isValid();
+    public function isValid(): bool;
 }

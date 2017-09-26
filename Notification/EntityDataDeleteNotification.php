@@ -33,6 +33,9 @@ class EntityDataDeleteNotification implements NotificationInterface
      */
     private $global;
 
+    /**
+     * EntityDataDeleteNotification constructor.
+     */
     public function __construct()
     {
         $this->global = false;
@@ -49,7 +52,6 @@ class EntityDataDeleteNotification implements NotificationInterface
 
     /**
      * @param int $entityId
-     *
      * @return $this
      */
     public function setEntityId(int $entityId)
@@ -69,7 +71,6 @@ class EntityDataDeleteNotification implements NotificationInterface
 
     /**
      * @param string $entityName
-     *
      * @return $this
      */
     public function setEntityName(string $entityName)
@@ -89,7 +90,6 @@ class EntityDataDeleteNotification implements NotificationInterface
 
     /**
      * @param string $type
-     *
      * @return $this
      */
     public function setType(string $type)
@@ -109,7 +109,6 @@ class EntityDataDeleteNotification implements NotificationInterface
 
     /**
      * @param array $recipientHashes
-     *
      * @return $this
      */
     public function setRecipientHashes(array $recipientHashes)
@@ -138,15 +137,15 @@ class EntityDataDeleteNotification implements NotificationInterface
     /**
      * @return array
      */
-    public function exportData()
+    public function exportData(): array
     {
         return [
-            'type'       => $this->getType(),
+            'type' => $this->getType(),
             'attributes' => [
                 'recipients' => $this->getRecipientHashes(),
                 'entityName' => $this->getEntityName(),
-                'entityId'   => $this->getEntityId(),
-                'global'     => $this->isGlobal(),
+                'entityId' => $this->getEntityId(),
+                'global' => $this->isGlobal(),
             ],
         ];
     }
@@ -154,8 +153,16 @@ class EntityDataDeleteNotification implements NotificationInterface
     /**
      * @return bool
      */
-    public function isValid()
+    public function isValid(): bool
     {
         return true;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return 'EntityDataDelete';
     }
 }
